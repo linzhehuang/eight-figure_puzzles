@@ -10,16 +10,19 @@
 #define _BOOK_H
 
 #include <stdio.h>
-#include <malloc.h>
-typedef int BOOK;  // book表，首位存放长度
+#include <stdlib.h>
+// book表
+typedef unsigned char BOOK;
 
 // 创建book表
 BOOK *create_book();
+// 销毁book表
+void destroy_book(BOOK *book);
 // 向book表中插入数值
-BOOK *insert_to_book(BOOK *book,int data);
+void insert_to_book(BOOK *book,int hash);
 // 查找book表中是否存在某值
-int is_exist(BOOK *book,int key);
-// 将数组转换成数字
-int arr_to_num(int arr[9]);
+int is_exist(BOOK *book,int hash);
+// 计算hash值
+int calc_hash(int data[9]);
 
 #endif

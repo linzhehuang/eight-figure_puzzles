@@ -10,6 +10,7 @@
 #define _BFS_H
 #include "../type/state.h"
 #include "../type/book.h"
+#include "../type/list.h"
 
 /* Function: bfs
  * Description: bfs解决路径

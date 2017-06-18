@@ -1,7 +1,8 @@
 /**
  * File: book.c
- * Description: book表用于存放已访问节点的值，
- * book表第一个元素为长度，实现创建book表，插
+ * Description: book表用于标记已存在的状态，
+ * 实现创建book表、销毁book表、插入状态、查
+ * 找某状态是否存在、计算数组hash值
  * 如数据值，及查找book表是否存在某值
  * Author: linzhehuang
  * Blog: http://www.cnblogs.com/linzhehuang/
@@ -35,7 +36,7 @@ int is_exist(BOOK *book,int hash) {
   BOOK tmp = book[index] >> offset;
   return (tmp&1);
 }
-// 计算hash值
+// 计算数组hash值
 int calc_hash(int data[9]) {
   int sys[9] = {0,1,2,6,24,120,720,5040,40320};
   int hash = 0;

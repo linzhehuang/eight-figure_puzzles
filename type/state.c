@@ -1,7 +1,8 @@
 /**
  * File: state.c
  * Description: 状态节点的创建、置入数据、
- * 根据旧状态及方向获取新状态节点
+ * 根据旧状态及方向获取新状态节点、通过用户
+ * 输入获取状态信息、判断问题是否可解
  * Author: linzhehuang
  * Blog: http://www.cnblogs.com/linzhehuang/
  * Version: 0.0.1
@@ -20,8 +21,8 @@ STATE *create_new_state() {
 // 置入状态数据
 void set_state_data(STATE *state,int data[9]) {
   for(int i = 0;i < 9;i++) {
-	if(data[i] == 0) state->pos = i;
-	state->data[i] = data[i];
+    if(data[i] == 0) state->pos = i;
+    state->data[i] = data[i];
   }
 }
 // 根据旧状态及方向获取新状态节点
@@ -53,4 +54,30 @@ int is_same_state(STATE *src,STATE *dst) {
 	if(src->data[i] != dst->data[i]) return 0;
   }
   return 1;
+}
+// 判断问题是否可解
+int solvable(STATE *start,STATE *target) {
+  int start_sum = 0,target_sum = 0;
+  for(int i = 0;i < 9;i++) {
+    int start_count = 0,target_count = 0;
+    for(int j = 0;j < i;j++) {
+      if(start->data[j] > start->data[i])
+        start_count++;
+      if(target->data[j] > target->data[i])
+        target_count++;
+    }
+    if(start->data[i])
+      start_sum += start_count;
+    if(target->data[i])
+      target_sum += target_count;
+  }
+  // 两者逆序数的奇偶性相同则可解
+  return !((start_sum&1) ^ (target_sum&1));
+}
+// 输入状态节点的数据
+void input_state_data(STATE *state) {
+  int data[9] = {0};
+  for(int i = 0;i < 9;i++)
+    scanf("%d",&data[i]);
+  set_state_data(state,data);
 }

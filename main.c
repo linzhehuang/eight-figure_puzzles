@@ -1,4 +1,11 @@
-// Using for unit testing
+/**
+ * File: main.c
+ * Description: 程序入口
+ * Author: linzhehuang
+ * Blog: http://www.cnblogs.com/linzhehuang/
+ * Version: 0.0.1
+ * Date: 2017.6.18
+ */
 #include "interface.h"
 
 int main(void) {

@@ -1,6 +1,8 @@
 /**
  * File: state.h
- * Description: state.c头文件
+ * Description: 状态节点的创建、置入数据、
+ * 根据旧状态及方向获取新状态节点、通过用户
+ * 输入获取状态信息、判断问题是否可解
  * Author: linzhehuang
  * Blog: http://www.cnblogs.com/linzhehuang/
  * Version: 0.0.1
@@ -50,5 +52,22 @@ void set_state_data(STATE *state,int data[9]);
  * Return: 相同返回1，否则为0
  */
 int is_same_state(STATE *src,STATE *dst);
+
+/* Function: is_same_state
+ * Description: 判断问题是否可解
+ * Parma: 
+ *   start-开始状态节点指针
+ *   target-目标状态节点指针
+ * Return: 可解返回1，否则为0
+ */
+int solvable(STATE *start,STATE *target);
+
+/* Function: input_state_data
+ * Description: 输入状态数据
+ * Parma: 
+ *   state-状态节点指针
+ * Return: 无
+ */
+void input_state_data(STATE *state);
 
 #endif
